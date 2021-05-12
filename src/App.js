@@ -12,33 +12,32 @@ function App() {
   const [tempMin, setTempMin] = useState(null);
 
   // Setting the useState for the Input fields
-  const [country, setCountry] = useState('');
   const [city, setCity] = useState('Vienna');
 
-  // Fetching Weather data
-  useEffect(() => {
+  function handleSubmitClick() {
+    // Fetching Weather data
     // GET request using fetch inside useEffect React hook
     fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`,
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setTemperature(data.main.temp);
         setFeelsLike(data.main.feels_like);
         setHumidity(data.main.humidity);
         setTempMin(data.main.temp_min);
         setTempMax(data.main.temp_max);
-        return setTotalReactPackages(data.total);
+        return;
       });
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, [city]);
+  }
 
   return (
     <>
       <Input
-        country={country}
-        setCountry={setCountry}
+        handleSubmitClick={handleSubmitClick}
         city={city}
         setCity={setCity}
       />

@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 
-export default function Input({ city, setCity, country, setCountry }) {
+export default function Input({ city, setCity, handleSubmitClick }) {
   // Setting state for the Input.js values
-
-  function handleCountryChange(event) {
-    setCountry(event.currentTarget.value);
-  }
 
   function handleCityChange(event) {
     setCity(event.currentTarget.value);
@@ -13,15 +9,6 @@ export default function Input({ city, setCity, country, setCountry }) {
 
   return (
     <form>
-      <label htmlFor="country">Name your Country</label>
-      <input
-        type="text"
-        id="country"
-        placeholder="Austria"
-        value={country}
-        onChange={handleCountryChange}
-      />
-
       <label htmlFor="city">Name your city</label>
       <input
         type="text"
@@ -30,7 +17,9 @@ export default function Input({ city, setCity, country, setCountry }) {
         value={city}
         onChange={handleCityChange}
       />
-      <button type="submit">Submit</button>
+      <button onClick={handleSubmitClick} type="button">
+        Submit
+      </button>
     </form>
   );
 }

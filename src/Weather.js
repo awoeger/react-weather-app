@@ -11,7 +11,6 @@ export default function Weather({
   return (
     <>
       <h1>Weather App</h1>
-      <div>Total React packages from hooks: {totalReactPackages}</div>
       <p>Current Temperature: {temperature}</p>
       <p>Feels Like: {feelsLike}</p>
       <p>Temperature minimum: {tempMin}</p>
