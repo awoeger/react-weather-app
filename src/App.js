@@ -1,33 +1,42 @@
 import './App.css';
-import react, { useEffect, useState } from 'react';
+import react, { useState } from 'react';
 import Input from './Input';
 import Weather from './Weather';
 
 function App() {
-  const [totalReactPackages, setTotalReactPackages] = useState(null);
   const [feelsLike, setFeelsLike] = useState(null);
   const [temperature, setTemperature] = useState(null);
   const [humidity, setHumidity] = useState(null);
   const [tempMax, setTempMax] = useState(null);
   const [tempMin, setTempMin] = useState(null);
+  const [weatherState, setWeatherState] = useState(null);
+  const [unit, setUnit] = useState('Kelvin');
 
   // Setting the useState for the Input fields
   const [city, setCity] = useState('Vienna');
 
+  //let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
+  //if(unit === 'Celcius'){
+  //  url =  `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+  //} else
+  // Event Handler Change Unit Button in Input.js
+  //function handleUnitChange() {
+
+  }
+
+  // Event Handler for Submit Button in Input.js
   function handleSubmitClick() {
     // Fetching Weather data
-    // GET request using fetch inside useEffect React hook
-    fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`,
-    )
+    // GET request using fetch
+    fetch(URL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTemperature(data.main.temp);
         setFeelsLike(data.main.feels_like);
         setHumidity(data.main.humidity);
         setTempMin(data.main.temp_min);
         setTempMax(data.main.temp_max);
+        setWeatherState(data.weather[0].main);
         return;
       });
 
@@ -40,14 +49,17 @@ function App() {
         handleSubmitClick={handleSubmitClick}
         city={city}
         setCity={setCity}
+        unit={unit}
+        setUnit={setUnit}
+        handleUnitChange={handleUnitChange}
       />
       <Weather
-        totalReactPackages={totalReactPackages}
         temperature={temperature}
         feelsLike={feelsLike}
         tempMin={tempMin}
         tempMax={tempMax}
         humidity={humidity}
+        weatherState={weatherState}
       />
     </>
   );

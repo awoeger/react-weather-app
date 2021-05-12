@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function Input({ city, setCity, handleSubmitClick }) {
+export default function Input({
+  city,
+  setCity,
+  handleSubmitClick,
+  handleUnitChange,
+}) {
   // Setting state for the Input.js values
-
   function handleCityChange(event) {
     setCity(event.currentTarget.value);
   }
@@ -19,6 +23,9 @@ export default function Input({ city, setCity, handleSubmitClick }) {
       />
       <button onClick={handleSubmitClick} type="button">
         Submit
+      </button>
+      <button onClick={handleUnitChange} type="button">
+        Change temperature unit
       </button>
     </form>
   );
