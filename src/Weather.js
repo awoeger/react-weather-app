@@ -12,10 +12,10 @@ export default function Weather({
     <>
       <h1>Weather App</h1>
       <p>Current state: {weatherState}</p>
-      <p>Current Temperature: {temperature} °C</p>
-      <p>Feels Like: {feelsLike} °C</p>
-      <p>Temperature minimum: {tempMin} °C</p>
-      <p>Temperature maximum: {tempMax} °C</p>
+      <p>Current Temperature: {temperature} °C / °F </p>
+      <p>Feels Like: {feelsLike} °C / °F</p>
+      <p>Temperature minimum: {tempMin} °C / °F</p>
+      <p>Temperature maximum: {tempMax} °C / °F</p>
       <p>Humidity: {humidity} %</p>
     </>
   );

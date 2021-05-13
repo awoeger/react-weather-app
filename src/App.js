@@ -10,25 +10,18 @@ function App() {
   const [tempMax, setTempMax] = useState(null);
   const [tempMin, setTempMin] = useState(null);
   const [weatherState, setWeatherState] = useState(null);
-  const [unit, setUnit] = useState('Kelvin');
+  const [unit, setUnit] = useState('Celcius');
 
   // Setting the useState for the Input fields
   const [city, setCity] = useState('Vienna');
-
-  //let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
-  //if(unit === 'Celcius'){
-  //  url =  `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-  //} else
-  // Event Handler Change Unit Button in Input.js
-  //function handleUnitChange() {
-
-  }
 
   // Event Handler for Submit Button in Input.js
   function handleSubmitClick() {
     // Fetching Weather data
     // GET request using fetch
-    fetch(URL)
+    fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric`,
+    )
       .then((response) => response.json())
       .then((data) => {
         setTemperature(data.main.temp);
@@ -41,6 +34,23 @@ function App() {
       });
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }
+
+  // Setting the change for temperature Unit conditions
+  function handleUnitChange() {
+    if (unit === 'Celcius') {
+      setTemperature(temperature + 273);
+      setTempMin(tempMin + 273.15);
+      setTempMax(tempMax + 273.15);
+      setFeelsLike(feelsLike + 273.15);
+      setUnit('Kelvin');
+    } else {
+      setTemperature(temperature - 273.15);
+      setTempMin(tempMin - 273.15);
+      setTempMax(tempMax - 273.15);
+      setFeelsLike(feelsLike - 273.15);
+      setUnit('Celcius');
+    }
   }
 
   return (
