@@ -1,38 +1,124 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url(./images/background-image.jpg);
+  font-size: 16px;
+  font-family: sans-serif;
+  min-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+#root {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+h1 {
+  font-size: 3em;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weather-container {
+  background-color: white;
+  border: 5px solid #119e4d;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+  border-radius: 7px;
+}
+
+p {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+span {
+  font-size: 1em;
+  margin-left: 10px;
+  color: #119e4d;
+}
+
+form {
+  display: flex;
+  margin: 20px;
+}
+
+button {
+  box-sizing: border-box;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0px 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  transition: all 0.3s;
+  background: #17aa56;
+  color: #fff;
+  border-radius: 7px;
+  box-shadow: 0 5px #119e4d;
+  font-size: 1em;
+  padding: 10px 20px;
+  overflow: hidden;
+}
+
+button:hover {
+  background-color: #0fa14f;
+}
+
+.input-field {
+  border-radius: 7px;
+  padding: 14px;
+  font-size: 20px;
+  text-align: center;
+  width: 7em;
+}
+
+.weather-container div {
+  background-position: center;
+  background-size: cover;
+  height: 70px;
+  width: 70px;
+  margin: auto;
+}
+
+.Clouds {
+  background-image: url(./images/iconfinder_cloudy_2995001.png);
+  background-position: center;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  margin: auto;
+}
+
+.Rain {
+  background-image: url(./images/iconfinder_weather-31_1530364.png);
+  background-position: center;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  margin: auto;
+}
+
+.Clear {
+  background-image: url(./images/iconfinder_weather-01_1530392.png);
+}
+
+.Snow {
+  background-image: url(./images/iconfinder_snow-cloud_2995007.png);
+}
+
+.default {
+  background-image: url(./images/iconfinder_cloudy_2995001.png);
 }

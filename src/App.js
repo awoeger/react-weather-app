@@ -62,7 +62,8 @@ function App() {
   }
 
   return (
-    <>
+    <div className="container">
+      <h1>Weather App</h1>
       <Input
         handleSubmitClick={handleSubmitClick}
         city={city}
@@ -78,8 +79,9 @@ function App() {
         tempMax={tempMax}
         humidity={humidity}
         weatherState={weatherState}
+        city={city}
       />
-    </>
+    </div>
   );
 }
 

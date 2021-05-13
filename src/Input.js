@@ -11,19 +11,19 @@ export default function Input({
 
   return (
     <form>
-      <label htmlFor="city">Name your city</label>
       <input
+        className="input-field"
         type="text"
         id="city"
         placeholder="Vienna"
         value={city}
         onChange={handleCityChange}
       />
-      <button onClick={handleSubmitClick} type="button">
+      <button className="submit" onClick={handleSubmitClick} type="button">
         Submit
       </button>
       <button onClick={handleUnitChange} type="button">
-        Change temperature unit
+        Change unit
       </button>
     </form>
   );

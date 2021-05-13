@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 export default function Weather({
   temperature,
   feelsLike,
@@ -7,14 +8,26 @@ export default function Weather({
   weatherState,
 }) {
   return (
-    <>
-      <h1>Weather App</h1>
-      <p>Current state: {weatherState}</p>
-      <p>Current Temperature: {temperature} °C / °F </p>
-      <p>Feels Like: {feelsLike} °C / °F</p>
-      <p>Temperature minimum: {tempMin} °C / °F</p>
-      <p>Temperature maximum: {tempMax} °C / °F</p>
-      <p>Humidity: {humidity} %</p>
-    </>
+    <div className="weather-container">
+      <div className={weatherState}></div>
+      <p>
+        Current state: <span>{weatherState}</span>
+      </p>
+      <p>
+        Current Temperature: <span>{temperature} °C/°F </span>
+      </p>
+      <p>
+        Feels Like: <span>{feelsLike} °C/°F</span>
+      </p>
+      <p>
+        Temperature min: <span>{tempMin} °C/°F</span>
+      </p>
+      <p>
+        Temperature max: <span>{tempMax} °C/°F</span>
+      </p>
+      <p>
+        Humidity: <span>{humidity} %</span>
+      </p>
+    </div>
   );
 }
