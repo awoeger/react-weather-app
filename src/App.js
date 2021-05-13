@@ -1,5 +1,5 @@
 import './App.css';
-import react, { useState } from 'react';
+import { useState } from 'react';
 import Input from './Input';
 import Weather from './Weather';
 
@@ -24,11 +24,11 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        setTemperature(data.main.temp);
-        setFeelsLike(data.main.feels_like);
+        setTemperature(parseInt(data.main.temp));
+        setFeelsLike(parseInt(data.main.feels_like));
         setHumidity(data.main.humidity);
-        setTempMin(data.main.temp_min);
-        setTempMax(data.main.temp_max);
+        setTempMin(parseInt(data.main.temp_min));
+        setTempMax(parseInt(data.main.temp_max));
         setWeatherState(data.weather[0].main);
         return;
       });
@@ -39,16 +39,24 @@ function App() {
   // Setting the change for temperature Unit conditions
   function handleUnitChange() {
     if (unit === 'Celcius') {
+      console.log(temperature);
       setTemperature(temperature + 273);
-      setTempMin(tempMin + 273.15);
-      setTempMax(tempMax + 273.15);
-      setFeelsLike(feelsLike + 273.15);
+      console.log(temperature);
+      console.log(temperature + 273);
+      console.log(unit);
+      setTempMin(tempMin + 273);
+      setTempMax(tempMax + 273);
+      setFeelsLike(feelsLike + 273);
       setUnit('Kelvin');
     } else {
-      setTemperature(temperature - 273.15);
-      setTempMin(tempMin - 273.15);
-      setTempMax(tempMax - 273.15);
-      setFeelsLike(feelsLike - 273.15);
+      console.log(temperature);
+      setTemperature(temperature - 273);
+      console.log(temperature);
+      console.log(temperature - 273);
+      console.log(unit);
+      setTempMin(tempMin - 273);
+      setTempMax(tempMax - 273);
+      setFeelsLike(feelsLike - 273);
       setUnit('Celcius');
     }
   }
