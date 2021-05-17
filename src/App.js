@@ -68,24 +68,54 @@ function App() {
   // GET CURRENT POSITION OF USER
 
   const getLocation = () => {
-    // Check if navigator.geolocation is supported by browser
-    if (!navigator.geolocation) {
-      setStatus('Geolocation is not supported by your browser');
-    } else {
-      // get user current position and set latitude and longitude coordinates
-      setStatus('Locating...');
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setStatus(null);
-          setLat(position.coords.latitude);
-          setLng(position.coords.longitude);
-        },
-        // error message
-        () => {
-          setStatus('Unable to retrieve your location');
-        },
-      );
-    }
+    setStatus('Locating...');
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setStatus(null);
+        setLat(position.coords.latitude);
+        setLng(position.coords.longitude);
+      },
+      // error message
+      () => {
+        setStatus('Unable to retrieve your location');
+      },
+    );
+
+    // async function getData() {
+    //   try {
+    //     const response = await fetch(
+    //       `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${process.env.REACT_APP_API_KEY}&units=metric`,
+    //     );
+    //     if (response.ok) {
+    //       const data = await response.json();
+    //       setTemperature(parseInt(data.main.temp));
+    //       setFeelsLike(parseInt(data.main.feels_like));
+    //       setHumidity(data.main.humidity);
+    //       setTempMin(parseInt(data.main.temp_min));
+    //       setTempMax(parseInt(data.main.temp_max));
+    //       setWeatherState(data.weather[0].main);
+    //     }
+    //     throw new Error('Request failed!');
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+    //getData();
+
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${process.env.REACT_APP_API_KEY}&units=metric`,
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setTemperature(parseInt(data.main.temp));
+        setFeelsLike(parseInt(data.main.feels_like));
+        setHumidity(data.main.humidity);
+        setTempMin(parseInt(data.main.temp_min));
+        setTempMax(parseInt(data.main.temp_max));
+        setWeatherState(data.weather[0].main);
+        return;
+      });
   };
 
   return (
