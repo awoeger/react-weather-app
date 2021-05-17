@@ -88,7 +88,6 @@ function App() {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setTemperature(parseInt(data.main.temp));
           setFeelsLike(parseInt(data.main.feels_like));
           setHumidity(data.main.humidity);
@@ -102,7 +101,8 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Weather App</h1>
+      <h1>Current Weather</h1>
+      <UserLocation handleUserLocationClick={handleUserLocationClick} />
       <Input
         handleSubmitClick={handleSubmitClick}
         city={city}
@@ -111,12 +111,6 @@ function App() {
         setUnit={setUnit}
         handleUnitChange={handleUnitChange}
       />
-      <UserLocation
-        lat={lat}
-        lng={lng}
-        status={status}
-        handleUserLocationClick={handleUserLocationClick}
-      />
       <Weather
         temperature={temperature}
         feelsLike={feelsLike}
@@ -124,7 +118,6 @@ function App() {
         tempMax={tempMax}
         humidity={humidity}
         weatherState={weatherState}
-        city={city}
       />
     </div>
   );

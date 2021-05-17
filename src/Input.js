@@ -20,7 +20,7 @@ export default function Input({
         onChange={handleCityChange}
       />
       <button className="submit" onClick={handleSubmitClick} type="button">
-        Submit
+        Choose city
       </button>
       <button onClick={handleUnitChange} type="button">
         Change unit
