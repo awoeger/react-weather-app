@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import Input from './Input';
+import UserLocation from './UserLocation';
 import Weather from './Weather';
 
 function App() {
@@ -11,11 +12,13 @@ function App() {
   const [tempMin, setTempMin] = useState(null);
   const [weatherState, setWeatherState] = useState(null);
   const [unit, setUnit] = useState('Celcius');
-
-  // Setting the useState for the Input fields
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [status, setStatus] = useState(null);
   const [city, setCity] = useState('Vienna');
 
-  // Event Handler for Submit Button in Input.js
+  // EVENT HANDLER FOR SUBMIT BUTTON IN INPUT.js
+
   function handleSubmitClick() {
     // Fetching Weather data
     // GET request using fetch
@@ -36,7 +39,8 @@ function App() {
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }
 
-  // Setting the change for temperature Unit conditions
+  // SETTING THE CHANGE FOR THE TEMPERATURE UNIT CONDITIONS
+
   function handleUnitChange() {
     if (unit === 'Celcius') {
       console.log(temperature);
@@ -61,6 +65,29 @@ function App() {
     }
   }
 
+  // GET CURRENT POSITION OF USER
+
+  const getLocation = () => {
+    // Check if navigator.geolocation is supported by browser
+    if (!navigator.geolocation) {
+      setStatus('Geolocation is not supported by your browser');
+    } else {
+      // get user current position and set latitude and longitude coordinates
+      setStatus('Locating...');
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setStatus(null);
+          setLat(position.coords.latitude);
+          setLng(position.coords.longitude);
+        },
+        // error message
+        () => {
+          setStatus('Unable to retrieve your location');
+        },
+      );
+    }
+  };
+
   return (
     <div className="container">
       <h1>Weather App</h1>
@@ -71,6 +98,12 @@ function App() {
         unit={unit}
         setUnit={setUnit}
         handleUnitChange={handleUnitChange}
+      />
+      <UserLocation
+        lat={lat}
+        lng={lng}
+        status={status}
+        getLocation={getLocation}
       />
       <Weather
         temperature={temperature}

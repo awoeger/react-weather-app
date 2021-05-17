@@ -6,12 +6,13 @@ export default function Weather({
   tempMax,
   humidity,
   weatherState,
+  city,
 }) {
   return (
     <div className="weather-container">
       <div className={weatherState}></div>
       <p>
-        Current state: <span>{weatherState}</span>
+        Current state {city}: <span>{weatherState}</span>
       </p>
       <p>
         Current Temperature: <span>{temperature} °C/°F </span>
