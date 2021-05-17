@@ -17,6 +17,7 @@ function App() {
   const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
   const [city, setCity] = useState('Vienna');
+  const [showDiv, setShowDiv] = useState(false);
 
   // EVENT HANDLER FOR SUBMIT BUTTON IN INPUT.js
 
@@ -34,6 +35,7 @@ function App() {
         setTempMin(parseInt(data.main.temp_min));
         setTempMax(parseInt(data.main.temp_max));
         setWeatherState(data.weather[0].main);
+        setShowDiv(true);
         return;
       });
 
@@ -69,6 +71,7 @@ function App() {
   // GET CURRENT POSITION OF USER
 
   const handleUserLocationClick = () => {
+    setShowDiv(true);
     setStatus('Locating...');
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -111,14 +114,16 @@ function App() {
         setUnit={setUnit}
         handleUnitChange={handleUnitChange}
       />
-      <Weather
-        temperature={temperature}
-        feelsLike={feelsLike}
-        tempMin={tempMin}
-        tempMax={tempMax}
-        humidity={humidity}
-        weatherState={weatherState}
-      />
+      {showDiv ? (
+        <Weather
+          temperature={temperature}
+          feelsLike={feelsLike}
+          tempMin={tempMin}
+          tempMax={tempMax}
+          humidity={humidity}
+          weatherState={weatherState}
+        />
+      ) : null}
     </div>
   );
 }
