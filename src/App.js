@@ -112,7 +112,6 @@ function App() {
         setCity={setCity}
         unit={unit}
         setUnit={setUnit}
-        handleUnitChange={handleUnitChange}
       />
       {showDiv ? (
         <Weather
@@ -122,6 +121,7 @@ function App() {
           tempMax={tempMax}
           humidity={humidity}
           weatherState={weatherState}
+          handleUnitChange={handleUnitChange}
         />
       ) : null}
     </div>

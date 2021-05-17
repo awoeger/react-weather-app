@@ -1,9 +1,4 @@
-export default function Input({
-  city,
-  setCity,
-  handleSubmitClick,
-  handleUnitChange,
-}) {
+export default function Input({ city, setCity, handleSubmitClick }) {
   // Setting state for the Input.js values
   function handleCityChange(event) {
     setCity(event.currentTarget.value);
@@ -21,9 +16,6 @@ export default function Input({
       />
       <button className="submit" onClick={handleSubmitClick} type="button">
         Choose city
-      </button>
-      <button onClick={handleUnitChange} type="button">
-        Change unit
       </button>
     </form>
   );

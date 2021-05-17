@@ -6,6 +6,7 @@ export default function Weather({
   tempMax,
   humidity,
   weatherState,
+  handleUnitChange,
 }) {
   return (
     <div className="weather-container">
@@ -28,6 +29,9 @@ export default function Weather({
       <p>
         Humidity: <span>{humidity} %</span>
       </p>
+      <button onClick={handleUnitChange} type="button">
+        Change unit
+      </button>
     </div>
   );
 }
