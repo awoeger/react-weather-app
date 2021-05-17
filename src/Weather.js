@@ -11,7 +11,7 @@ export default function Weather({
   return (
     <div className="weather-container">
       <div className={weatherState}></div>
-      <p>
+      <p className="state">
         Current state: <span>{weatherState}</span>
       </p>
       <p>
@@ -29,7 +29,7 @@ export default function Weather({
       <p>
         Humidity: <span>{humidity} %</span>
       </p>
-      <button onClick={handleUnitChange} type="button">
+      <button className="unit-btn" onClick={handleUnitChange} type="button">
         Change unit
       </button>
     </div>

@@ -31,7 +31,7 @@ h1 {
 }
 
 .weather-container {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   border: 5px solid #119e4d;
   padding: 20px;
   width: 80%;
@@ -42,12 +42,17 @@ h1 {
 p {
   font-weight: bold;
   font-size: 1.5em;
+  color: white;
+}
+
+.state {
+  margin-top: 0px;
 }
 
 span {
   font-size: 1em;
   margin-left: 10px;
-  color: #119e4d;
+  color: #1ace68;
 }
 
 form {
@@ -58,7 +63,7 @@ form {
 button {
   box-sizing: border-box;
   border: none;
-  font-family: inherit;
+  font-family: 'Montserrat', sans-serif;
   cursor: pointer;
   display: inline-block;
   margin: 0px 15px;
@@ -81,19 +86,34 @@ button:hover {
   background-color: #0fa14f;
 }
 
+.location-btn {
+  padding: 15px 20px;
+}
+
+.unit-btn {
+  padding: 15px 20px;
+}
+
 .input-field {
   border-radius: 7px;
   padding: 14px;
   font-size: 20px;
   text-align: center;
   width: 7em;
+  box-shadow: 0 5px #c7e4d3;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+::placeholder {
+  color: #c7c3c3;
 }
 
 .weather-container div {
   background-position: center;
   background-size: cover;
-  height: 70px;
-  width: 70px;
+  height: 100px;
+  width: 100px;
   margin: auto;
 }
 
